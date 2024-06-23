@@ -11,41 +11,41 @@ const msgError = document.querySelector('.msg-error');
 const pop = document.querySelector('.pop-up');
 
 
-form.addEventListener('submit', (event)=> {
+form.addEventListener('submit', (event) => {
     event.preventDefault();
     Array.from(inputs).forEach((input) => {
-        if ((input.value == '' || msgArea.value === '' || consent.checked == false ))  {
+        if ((input.value == '' || msgArea.value === '' || consent.checked == false)) {
             pop.style.display = 'none';
         } else {
             pop.style.display = 'flex';
 
         }
-    }) 
+    })
 
     checkFields();
     checkRadios();
-    validateEmail();    
-    checkTextarea();    
-    checkBox();     
+    validateEmail();
+    checkTextarea();
+    checkBox();
 });
 
 // form.addEventListener('click', checkRadios);
 // for input fields
 function checkFields() {
     Array.from(inputs).forEach((input, index) => {
-        if (input.value == '' ) {
+        if (input.value == '') {
             errors[index].style.display = 'block';
             input.style.border = '1px solid hsl(0, 66%, 54%)';
         } else {
             input.style.border = '1px solid hsl(186, 15%, 59%)';
             errors[index].style.display = 'none';
         }
-    }) 
+    })
 
 }
 
 //for email
-function validateEmail () {
+function validateEmail() {
     const format = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
     let email = document.getElementById('email');
     if (email.value !== '') {
@@ -65,25 +65,25 @@ function checkRadios() {
     const radioName = document.getElementsByName('query');
     let isChecked = false;
 
-     for (let i = 0; i < radioName.length; i++) {
+    for (let i = 0; i < radioName.length; i++) {
         if (radioName[i].checked) {
             isChecked = true;
             break;
         }
     }
-    
+
     if (!isChecked) {
         queryMsg.classList.remove('hidden');
         console.log('checked');
     } else {
-      queryMsg.classList.add('hidden')
-      console.log('unchecked');
-   }
+        queryMsg.classList.add('hidden')
+        console.log('unchecked');
+    }
 }
 
 //for textarea
 function checkTextarea() {
-    if (msgArea.value === '' ) {
+    if (msgArea.value === '') {
         msgError.style.display = 'block';
         msgArea.style.border = '1px solid hsl(0, 66%, 54%)'
     } else {
@@ -91,10 +91,10 @@ function checkTextarea() {
         msgArea.style.border = '1px solid hsl(186, 15%, 59%)';
     }
 }
-    
+
 //for checkbox
 function checkBox() {
-    if ( consent.checked == false ){
+    if (consent.checked == false) {
         consentError.style.display = 'block';
     } else {
         consentError.style.display = 'none';
@@ -102,17 +102,17 @@ function checkBox() {
 }
 
 
-function changeColor () {
+function changeColor() {
     const radioButtons = document.querySelectorAll('input[name="query"]');
-    
-    radioButtons.forEach(function(radio) {
-        radio.addEventListener('change', function() {
+
+    radioButtons.forEach(function (radio) {
+        radio.addEventListener('change', function () {
             const queryGroups = document.querySelectorAll('.query-group');
-            
-            queryGroups.forEach(function(group) {
+
+            queryGroups.forEach(function (group) {
                 group.classList.remove('selected');
             });
-            
+
             if (this.checked) {
                 this.parentElement.classList.add('selected');
             }
