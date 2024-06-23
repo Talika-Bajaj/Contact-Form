@@ -1,0 +1,26 @@
+@media screen and (width>= 650px) {
+    h1 {
+        font-size: 40px;
+    }
+    #input-form {
+        width: 80vw;
+    }
+
+    .pop-up {
+        width: 450px;
+    }
+}
+
+@media screen and (width>= 850px) {
+    #input-form {
+        width: 750px;
+    }
+    .group.name, .group.radios {
+    grid-template-columns: 330px 330px;
+    gap: 20px;
+    }
+
+    #msg-area {
+        height: 120px;
+    }
+}
