@@ -1,18 +1,24 @@
 @media screen and (width>=650px) {
+
+    /* main */
     h1 {
         font-size: 36px;
     }
 
+    /* form */
     #input-form {
         width: 80vw;
     }
 
+    /* pop-up message */
     .pop-up {
         width: 450px;
     }
 }
 
 @media screen and (width>=850px) {
+
+    /* form */
     #input-form {
         width: 750px;
     }
@@ -24,6 +30,6 @@
     }
 
     #msg-area {
-        height: 120px;
+        height: 100px;
     }
 }

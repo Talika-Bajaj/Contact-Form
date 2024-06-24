@@ -1,5 +1,3 @@
-const queryRadio = document.getElementsByClassName('query-radio');
-const queryGroup = document.getElementsByClassName('query-group');
 const inputs = document.getElementsByClassName('inputs');
 const form = document.getElementById('input-form');
 const errors = document.getElementsByClassName('error');
@@ -29,7 +27,6 @@ form.addEventListener('submit', (event) => {
     checkBox();
 });
 
-// form.addEventListener('click', checkRadios);
 // for input fields
 function checkFields() {
     Array.from(inputs).forEach((input, index) => {
@@ -60,6 +57,7 @@ function validateEmail() {
     }
 }
 
+//for radio buttons
 function checkRadios() {
     const queryMsg = document.getElementById('query-msg');
     const radioName = document.getElementsByName('query');
@@ -74,12 +72,31 @@ function checkRadios() {
 
     if (!isChecked) {
         queryMsg.classList.remove('hidden');
-        console.log('checked');
     } else {
-        queryMsg.classList.add('hidden')
-        console.log('unchecked');
+        queryMsg.classList.add('hidden');
     }
 }
+
+//for radio buttons background color
+function changeColor() {
+    const radioButtons = document.querySelectorAll('input[name="query"]');
+
+    radioButtons.forEach(function (radio) {
+        radio.addEventListener('change', function () {
+            const queryGroups = document.querySelectorAll('.query-group');
+
+            queryGroups.forEach(function (group) {
+                group.classList.remove('selected');
+            });
+
+            if (this.checked) {
+                this.parentElement.classList.add('selected');
+            }
+        });
+    });
+}
+
+changeColor();
 
 //for textarea
 function checkTextarea() {
@@ -100,24 +117,3 @@ function checkBox() {
         consentError.style.display = 'none';
     }
 }
-
-
-function changeColor() {
-    const radioButtons = document.querySelectorAll('input[name="query"]');
-
-    radioButtons.forEach(function (radio) {
-        radio.addEventListener('change', function () {
-            const queryGroups = document.querySelectorAll('.query-group');
-
-            queryGroups.forEach(function (group) {
-                group.classList.remove('selected');
-            });
-
-            if (this.checked) {
-                this.parentElement.classList.add('selected');
-            }
-        });
-    });
-}
-
-changeColor();
